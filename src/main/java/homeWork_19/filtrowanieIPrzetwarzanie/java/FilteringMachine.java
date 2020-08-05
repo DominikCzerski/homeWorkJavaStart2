@@ -13,7 +13,7 @@ public class FilteringMachine {
 
 	public List<Integer> filterOutLowerNumbersThan20(List<Integer> numberList) {
 		return numberList.stream()
-				.filter(number -> number > 20)
+				.filter(number -> number >= 20)
 				.collect(Collectors.toList());
 	}
 
@@ -26,8 +26,8 @@ public class FilteringMachine {
 	// Metoda powinna przekształcić tytuły na książki i zwrócić tylko te które rozpoczynają się od słowa "Gra"
 	public List<Book> convertToBooksAndReturnOnlyStartingWithGra(List<String> titles) {
 		return titles.stream()
+				.filter(title -> title.startsWith("Gra"))
 				.map(Book::new)
-				.filter(title -> title.getTitle().startsWith("Gra"))
 				.collect(Collectors.toList());
 	}
 }
