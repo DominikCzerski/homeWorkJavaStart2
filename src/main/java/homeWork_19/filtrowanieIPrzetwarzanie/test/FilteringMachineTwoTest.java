@@ -3,22 +3,21 @@ package homeWork_19.filtrowanieIPrzetwarzanie.test;
 import homeWork_19.filtrowanieIPrzetwarzanie.java.FilteringMachineTwo;
 import homeWork_19.filtrowanieIPrzetwarzanie.java.Person;
 import homeWork_19.filtrowanieIPrzetwarzanie.java.User;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.assertj.core.api.Assertions;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+
 
 public class FilteringMachineTwoTest {
 
 	private FilteringMachineTwo machine = new FilteringMachineTwo();
 	private List<Person> people;
 
-	@BeforeTest
+	@Before
 	public void init() {
 		people = new ArrayList<>();
 		people.add(new Person("Tomek", 2));
@@ -34,9 +33,9 @@ public class FilteringMachineTwoTest {
 		List<String> kids = machine.findKidNames(people);
 
 		// then
-		assertThat(kids.size(), is(2));
-		assertThat(kids, hasItem("Tomek"));
-		assertThat(kids, hasItem("Sebastian"));
+		Assertions.assertThat(kids.size()).isEqualTo(2);
+		Assertions.assertThat(kids.contains("Tomek"));
+		Assertions.assertThat(kids.contains("Sebastian"));
 	}
 
 	@Test
@@ -45,12 +44,12 @@ public class FilteringMachineTwoTest {
 		List<User> users = machine.convertPeopleToUsers(people);
 
 		// then
-		assertThat(users.size(), is(5));
-		assertThat(users, hasItem(new User("Tomek", 2, "Tomek_2")));
-		assertThat(users, hasItem(new User("Ania", 18, "Ania_18")));
-		assertThat(users, hasItem(new User("Konrad", 44, "Konrad_44")));
-		assertThat(users, hasItem(new User("Janusz", 52, "Janusz_52")));
-		assertThat(users, hasItem(new User("Sebastian", 16, "Sebastian_16")));
+		Assertions.assertThat(users.size()).isEqualTo(5);
+		Assertions.assertThat(users.contains(new User("Tomek", 2, "Tomek_2")));
+		Assertions.assertThat(users.contains(new User("Ania", 18, "Ania_18")));
+		Assertions.assertThat(users.contains(new User("Konrad", 44, "Konrad_44")));
+		Assertions.assertThat(users.contains(new User("Janusz", 52, "Janusz_52")));
+		Assertions.assertThat(users.contains(new User("Sebastian", 16, "Sebastian_16")));
 	}
 
 
