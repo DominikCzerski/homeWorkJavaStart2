@@ -5,12 +5,12 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import static homeWork_20.Calculator.fibonacciSequence;
+import static org.assertj.core.api.Assertions.*;
 
 public class SumOfEvenFibonacciNumbersTest {
 
-
 	@Test
-	void shouldReturn10WhenAddingSumOfEvenFibonacciAndNumbers() {
+	public void shouldReturn10WhenAddingSumOfEvenFibonacciAndNumbers() {
 		//given
 		int numberOfLimit = 7;
 
@@ -19,11 +19,12 @@ public class SumOfEvenFibonacciNumbersTest {
 
 		//then
 		int expectedNumber = 10;
-		Assertions.assertThat(sumOfEvenNumbers).isEqualTo(expectedNumber);
+		assertThat(sumOfEvenNumbers).isEqualTo(expectedNumber);
 	}
 
 	@Test
-	void shouldReturn44WhenAddingSumOfEvenFibonacciAndNumbers() {
+	public void shouldReturn44WhenAddingSumOfEvenFibonacciAndNumbers() {
+		//given
 		int numberOfLimit = 10;
 
 		//when
@@ -31,12 +32,13 @@ public class SumOfEvenFibonacciNumbersTest {
 
 		//then
 		int expectedNumber = 44;
-		Assertions.assertThat(sumOfEvenNumbers).isEqualTo(expectedNumber);
+		assertThat(sumOfEvenNumbers).isEqualTo(expectedNumber);
 
 	}
 
 	@Test
-	void shouldReturn188WhenAddingSumOfEvenFibonacciAndNumbers() {
+	public void shouldReturn188WhenAddingSumOfEvenFibonacciAndNumbers() {
+		//given
 		int numberOfLimit = 12;
 
 		//when
@@ -44,6 +46,6 @@ public class SumOfEvenFibonacciNumbersTest {
 
 		//then
 		int expectedNumber = 188;
-		Assertions.assertThat(sumOfEvenNumbers).isEqualTo(expectedNumber);
+		assertThat(sumOfEvenNumbers).isEqualTo(expectedNumber);
 	}
 }
