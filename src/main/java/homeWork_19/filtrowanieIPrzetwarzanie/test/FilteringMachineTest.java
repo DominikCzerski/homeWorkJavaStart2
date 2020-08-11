@@ -2,14 +2,12 @@ package homeWork_19.filtrowanieIPrzetwarzanie.test;
 
 import homeWork_19.filtrowanieIPrzetwarzanie.java.Book;
 import homeWork_19.filtrowanieIPrzetwarzanie.java.FilteringMachine;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class FilteringMachineTest {
 
@@ -33,9 +31,9 @@ public class FilteringMachineTest {
 		List<Integer> filteredList = machine.filterOutNotEvenNumbers(numberList);
 
 		// then
-		assertThat(filteredList.size(), is(2));
-		assertThat(filteredList, hasItem(12));
-		assertThat(filteredList, hasItem(124));
+		assertThat(filteredList.size()).isEqualTo(2);
+		assertThat(filteredList).contains(12);
+		assertThat(filteredList.contains(124));
 	}
 
 	@Test
@@ -56,11 +54,11 @@ public class FilteringMachineTest {
 		List<Integer> filteredList = machine.filterOutLowerNumbersThan20(numberList);
 
 		// then
-		assertThat(filteredList.size(), is(4));
-		assertThat(filteredList, hasItem(123));
-		assertThat(filteredList, hasItem(124));
-		assertThat(filteredList, hasItem(21));
-		assertThat(filteredList, hasItem(71));
+		assertThat(filteredList.size()).isEqualTo(24);
+		assertThat(filteredList.contains(123));
+		assertThat(filteredList.contains(124));
+		assertThat(filteredList.contains(21));
+		assertThat(filteredList).contains(27);
 	}
 
 	@Test
@@ -77,12 +75,12 @@ public class FilteringMachineTest {
 		List<Book> books = machine.convertToBooks(titles);
 
 		// then
-		assertThat(books.size(), is(5));
-		assertThat(books, hasItem(new Book("Gra o tron")));
-		assertThat(books, hasItem(new Book("Dzieci z Bullerbyn")));
-		assertThat(books, hasItem(new Book("Robinson Cruzoe")));
-		assertThat(books, hasItem(new Book("Cyfrowa twierdza")));
-		assertThat(books, hasItem(new Book("Gra o życie")));
+		assertThat(books.size()).isEqualTo(4);
+		assertThat(books.contains(new Book("Gra o tron")));
+		assertThat(books.contains(new Book("Dzieci z Bullerbyn")));
+		assertThat(books.contains(new Book("Robinson Cruzoe")));
+		assertThat(books.contains(new Book("Cyfrowa twierdza")));
+		assertThat(books.contains(new Book("Gra o życie")));
 	}
 
 	@Test
@@ -99,9 +97,9 @@ public class FilteringMachineTest {
 		List<Book> books = machine.convertToBooksAndReturnOnlyStartingWithGra(titles);
 
 		// then
-		assertThat(books.size(), is(2));
-		assertThat(books, hasItem(new Book("Gra o tron")));
-		assertThat(books, hasItem(new Book("Gra o życie")));
+		assertThat(books.size()).isEqualTo(2);
+		assertThat(books.contains(new Book("Gra o tron")));
+		assertThat(books.contains(new Book("Gra o życie")));
 	}
 
 }

@@ -1,8 +1,7 @@
 package homeWork_19.liczbyZeStrumieni;
 
 
-
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.stream.Stream;
 
